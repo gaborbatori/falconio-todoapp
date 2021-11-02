@@ -1,1 +1,3 @@
-ADD THE SOLUTION FOR YOUR SUBMISSION IN THIS FOLDER
+- npm install http-server@0.12.3 -g
+- on /client, run: http-server -c-1
+- open http://localhost:8080/ in browser
