@@ -1,8 +1,8 @@
 @keyframes loader {
 	to {transform: rotate(360deg);}
 }
-
-.loading:before {
+.loading{ pointer-events: none; }
+.loading:before{
 	content: '';
 	box-sizing: border-box;
 	position: absolute;

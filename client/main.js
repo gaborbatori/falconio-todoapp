@@ -1,3 +1,9 @@
+window.application = {
+	provider: {
+		host: "http://localhost:1337"
+	}
+};
+
 requirejs.config({
 	baseUrl: "./",
 	paths: {
@@ -7,7 +13,7 @@ requirejs.config({
 	}
 });
 
-requirejs(["jquery"], function(){
+requirejs(["jquery", "helpers/jsrender"], function(){
 	require(["components/tasks/controller"], function(component){
 		$.when(component.initialize($("body > main"))).then($().removeClass.bind($("body"), "loading"));
 	});
