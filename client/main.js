@@ -8,7 +8,7 @@ requirejs.config({
 });
 
 requirejs(["jquery"], function(){
-	console.log("jquery initialized...");
-	
-	$("body").removeClass("loading");
+	require(["components/tasks/controller"], function(component){
+		$.when(component.initialize($("body > main"))).then($().removeClass.bind($("body"), "loading"));
+	});
 });
