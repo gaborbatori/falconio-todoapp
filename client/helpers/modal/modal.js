@@ -1,23 +1,27 @@
 //-------------------------------------------------------------------------------
-define(["modal", "text!./modal.html"], function(modal, tpl){
+define(["text!./modal.html", "css!./modal.css"], function(tpl){
 //-------------------------------------------------------------------------------
-	var template = $.templates(tpl);
+	var template = $.templates(tpl),
+		zIndex = 1000000;
 
 	return {
 		open: open
 	};
 	//-------------------------------------------------------------------------------
-	function open(){
+	function open(content){
 	//-------------------------------------------------------------------------------
-		var $defer = $.Deferred(),
-			$modal = modal.open(template.render({})).on("click", "button[name=confirm]", confirm);
+		var $modal = $(template.render({ content: content, zIndex: zIndex++ })).appendTo($("body").addClass("has-modals"));
 
-		return $defer.promise();
+		$modal.on("click", "button.close", close).close = close;
+
+		return $modal;
 		//-------------------------------------------------------------------------------
-		function confirm(){
+		function close(){
 		//-------------------------------------------------------------------------------
-			$defer.resolve();
-			$modal.close();
+			if($("body").children(".modal").length == 1)
+				$("body").removeClass("has-modals");
+
+			$modal.remove();
 		}
 		//-------------------------------------------------------------------------------
 	}

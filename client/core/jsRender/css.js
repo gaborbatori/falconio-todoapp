@@ -1,23 +1,29 @@
 //-------------------------------------------------------------------------------
-define(["modal", "text!./modal.html"], function(modal, tpl){
+define([], function(){
 //-------------------------------------------------------------------------------
-	var template = $.templates(tpl);
-
 	return {
-		open: open
+		load: load
 	};
 	//-------------------------------------------------------------------------------
-	function open(){
+	function load(name, require, onload, config){
 	//-------------------------------------------------------------------------------
-		var $defer = $.Deferred(),
-			$modal = modal.open(template.render({})).on("click", "button[name=confirm]", confirm);
+		var $defer = $.Deferred();
 
-		return $defer.promise();
+		//inject async
+		inject(require.toUrl(name));
+
+		//return
+		onload($defer.promise());
 		//-------------------------------------------------------------------------------
-		function confirm(){
+		function inject(filename){
 		//-------------------------------------------------------------------------------
-			$defer.resolve();
-			$modal.close();
+			var link = document.createElement("link");
+			link.rel = "stylesheet";
+			link.type = "text/css";
+			link.href = filename;
+			link.onload = $defer.resolve;
+			link.onerror = $defer.reject;
+			document.getElementsByTagName("head")[0].appendChild(link);
 		}
 		//-------------------------------------------------------------------------------
 	}

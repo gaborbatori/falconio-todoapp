@@ -1,6 +1,6 @@
 <li data-id="{{attr:id}}">
 	<h4>{{>title}}</h4>
-	{{if description}}<p>{{>description}}</p>{{/if}}
+	{{if description}}<p>{{:~window.nl2br(~window.escapehtml(description))}}</p>{{/if}}
 	Created: {{datetime:createdAt}}, Last update: {{datetime:updatedAt}}
 	<button name="del">x</button>
 </li>

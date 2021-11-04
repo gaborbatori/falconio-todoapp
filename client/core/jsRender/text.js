@@ -1,13 +1,13 @@
 //-------------------------------------------------------------------------------
-define(["jsrender"], function(){
+define([], function(){
 //-------------------------------------------------------------------------------
-	$.views.converters("datetime", datetime);
+	return {
+		load: load
+	};
 	//-------------------------------------------------------------------------------
-	function datetime(timestamp){
+	function load(name, require, onload, config){
 	//-------------------------------------------------------------------------------
-		var time = new Date(timestamp);
-
-		return time.toLocaleDateString() + " " + time.toLocaleTimeString();
+		$.ajax(require.toUrl(name), { type: "GET", dataType: "text" }).done(onload).fail(onload.error.bind(null));
 	}
 	//-------------------------------------------------------------------------------
 });

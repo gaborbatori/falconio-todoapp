@@ -24,7 +24,7 @@ define(["require", "text!./view.html", "text!./item.html", "./api"], function(re
 				.done(function(data){
 					$items.empty().html(template.render(data));
 					showMessageIfEmpty();
-				});
+				}).fail(function(xhr){ $items.empty().html(xhr.statusText); });
 		}
 		//-------------------------------------------------------------------------------
 		function add(){
@@ -42,7 +42,7 @@ define(["require", "text!./view.html", "text!./item.html", "./api"], function(re
 		//-------------------------------------------------------------------------------
 			var $el = $(this).closest("li");
 			require(["./del/modal"], function(modal){
-				modal.done(function(){
+				modal.open().done(function(){
 					api.del($el.attr("data-id")).done(function(){
 						$el.remove();
 						showMessageIfEmpty();
