@@ -4,13 +4,13 @@ define([], function(){
 	var path = "/tasks";
 
 	return {
-		get: get,
+		list: list,
 		add: add,
 		update: update,
 		del: del
 	};
 	//-------------------------------------------------------------------------------
-	function get(){
+	function list(){
 	//-------------------------------------------------------------------------------
 		return $.ajax(window.application.provider.host + path, { type: "GET", dataType: "json" });
 	}

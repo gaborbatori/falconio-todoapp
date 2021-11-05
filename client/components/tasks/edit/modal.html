@@ -1,11 +1,11 @@
 <div class="header">{{:type}} Task</div>
-<div class="form content">
+<div class="form content" style="width: 400px">
 	<label class="required">Title</label>
 	<input name="title" value="{{attr:data.title}}" />
 	<label>Description</label>
 	<textarea name="description" rows="5">{{>data.description}}</textarea>
 </div>
 <div class="footer">
-	<button class="close">Cancel</button>
-	<button name="confirm">{{:type == "Edit" ? "Update" : "Save"}}</button>
+	<a class="close button">Cancel</a>
+	<a class="blue button" name="confirm"><i class="fas fa-save"></i>Save</a>
 </div>

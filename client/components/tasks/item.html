@@ -1,7 +1,12 @@
-<li data-id="{{attr:id}}">
-	<h4>{{>title}}</h4>
-	{{if description}}<p>{{:~window.nl2br(~window.escapehtml(description))}}</p>{{/if}}
-	Created: {{datetime:createdAt}}, Last update: {{datetime:updatedAt}}
-	<button name="edit">edit</button>
-	<button name="del">x</button>
-</li>
+<div data-id="{{attr:id}}" class="item">
+	<div class="title">
+		<div>{{>title}}</div>
+		<a class="button" name="edit"><i class="fas fa-pencil-alt"></i>Edit</a>
+		<a class="red button" name="del"><i class="fas fa-trash-alt"></i>Delete</a>
+	</div>
+	{{if description}}<div class="content">{{:~window.nl2br(~window.escapehtml(description))}}</div>{{/if}}
+	<div class="footer">
+		<div><span>Created:</span> {{datetime:createdAt}}</div>
+		<div><span>Last update:</span> {{datetime:updatedAt}}</div>
+	</div>
+</div>

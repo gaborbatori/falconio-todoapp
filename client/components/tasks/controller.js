@@ -1,5 +1,5 @@
 //-------------------------------------------------------------------------------
-define(["require", "text!./view.html", "text!./item.html", "./api"], function(require, view, tpl, api){
+define(["require", "./api", "text!./view.html", "text!./item.html", "css!./style.css"], function(require, api, view, tpl){
 //-------------------------------------------------------------------------------
 	var items = [],
 		template = $.templates(tpl);
@@ -11,18 +11,18 @@ define(["require", "text!./view.html", "text!./item.html", "./api"], function(re
 	//-------------------------------------------------------------------------------
 	function initialize($container){
 	//-------------------------------------------------------------------------------
-		var $items = $container.html(view)
-			.on("click", "button[name=add]", add)
-			.on("click", "button[name=edit]", edit)
-			.on("click", "button[name=del]", del)
-			.on("click", "button[name=reload]", load)
-			.children("ul");
+		var $view = $container.html(view).children()
+				.on("click", "a.button[name=add]", add)
+				.on("click", "a.button[name=edit]", edit)
+				.on("click", "a.button[name=del]", del)
+				.on("click", "a.button[name=reload]", load),
+			$items = $view.children(".items");
 
 		return load();
 		//-------------------------------------------------------------------------------
 		function load(){
 		//-------------------------------------------------------------------------------
-			return api.get().done(function(data){
+			return api.list().done(function(data){
 					items = data;
 					$items.empty().html(template.render(items));
 					showEmptyMessageIfNone();
@@ -32,7 +32,7 @@ define(["require", "text!./view.html", "text!./item.html", "./api"], function(re
 		function add(){
 		//-------------------------------------------------------------------------------
 			require(["./edit/modal"], function(modal){
-				modal.open("New").done(function(data){
+				modal.show("New").done(function(data){
 					api.add(data).done(function(item){
 						hideEmptyMessage();
 						items.push(item);
@@ -44,11 +44,11 @@ define(["require", "text!./view.html", "text!./item.html", "./api"], function(re
 		//-------------------------------------------------------------------------------
 		function edit(){
 		//-------------------------------------------------------------------------------
-			var $item = $(this).closest("li"),
+			var $item = $(this).closest(".item"),
 				item = items.find(function(item){ return item.id == $item.attr("data-id"); });
 
 			require(["./edit/modal"], function(modal){
-				modal.open("Edit", item).done(function(data){
+				modal.show("Edit", item).done(function(data){
 					api.update(item.id, data).done(function(data){
 						$.extend(item, data);
 						$item.replaceWith(template.render(item));
@@ -59,11 +59,11 @@ define(["require", "text!./view.html", "text!./item.html", "./api"], function(re
 		//-------------------------------------------------------------------------------
 		function del(){
 		//-------------------------------------------------------------------------------
-			var $item = $(this).closest("li"),
+			var $item = $(this).closest(".item"),
 				item = items.find(function(item){ return item.id == $item.attr("data-id"); });
 
 			require(["./del/modal"], function(modal){
-				modal.open().done(function(){
+				modal.show().done(function(){
 					api.del($item.attr("data-id")).done(function(){
 						items.splice(items.indexOf(item), 1);
 						$item.remove();
@@ -76,7 +76,7 @@ define(["require", "text!./view.html", "text!./item.html", "./api"], function(re
 		function showEmptyMessageIfNone(){
 		//-------------------------------------------------------------------------------
 			if(!$items.children().length)
-				$items.html("<li>No tasks... Great!</li>");
+				$items.html("<p>No tasks... Great!</p>");
 		}
 		//-------------------------------------------------------------------------------
 		function hideEmptyMessage(){

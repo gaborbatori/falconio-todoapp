@@ -4,13 +4,13 @@ define(["modal", "text!./modal.html"], function(modal, tpl){
 	var template = $.templates(tpl);
 
 	return {
-		open: open
+		show: show
 	};
 	//-------------------------------------------------------------------------------
-	function open(){
+	function show(){
 	//-------------------------------------------------------------------------------
 		var $defer = $.Deferred(),
-			$modal = modal.open(template.render({})).on("click", "button[name=confirm]", confirm);
+			$modal = modal.open(template.render({})).on("click", "a.button[name=confirm]", confirm);
 
 		return $defer.promise();
 		//-------------------------------------------------------------------------------

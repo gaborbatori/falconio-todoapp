@@ -10,9 +10,13 @@ define(["text!./modal.html", "css!./modal.css"], function(tpl){
 	//-------------------------------------------------------------------------------
 	function open(content){
 	//-------------------------------------------------------------------------------
-		var $modal = $(template.render({ content: content, zIndex: zIndex++ })).appendTo($("body").addClass("has-modals"));
+		var $modal = $(template.render({ content: content, zIndex: zIndex++ }))
+				.appendTo($("body").addClass("has-modals"))
+				.on("click", ".close", close);
 
-		$modal.on("click", "button.close", close).close = close;
+		$modal.close = close;
+
+		window.setTimeout($("").addClass.bind($modal, "visible"), 100);
 
 		return $modal;
 		//-------------------------------------------------------------------------------
@@ -21,7 +25,10 @@ define(["text!./modal.html", "css!./modal.css"], function(tpl){
 			if($("body").children(".modal").length == 1)
 				$("body").removeClass("has-modals");
 
-			$modal.remove();
+			$modal.removeClass("visible");
+			window.setTimeout(function(){
+				$modal.remove();
+			}, 500);
 		}
 		//-------------------------------------------------------------------------------
 	}

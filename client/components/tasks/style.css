@@ -1,0 +1,61 @@
+.tasks{
+	width: 600px;
+	padding: 5px;
+	border-radius: 10px;
+	background-color: rgba(0, 10, 20, 0.1);
+}
+
+.tasks > .header{
+	margin: 20px 20px 25px;
+	font-size: 20px;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+.tasks > .header > a{
+	display: inline-block;
+	float: right;
+	font-size: 13px;
+}
+.tasks > .header > a + a{ margin-right: 10px; }
+
+.tasks > .items > .item{
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+.tasks > .items > .item > .title{
+	display: flex;
+	justify-items: stretch;
+	align-items: flex-start;
+	padding: 10px;
+	background-color: #fff;
+	font-size: 15px;
+	font-weight: bold;
+}
+.tasks > .items > .item > .title > div{ flex-grow: 1; }
+.tasks > .items > .item > .title > a{
+	margin-left: 10px;
+	font-size: 11px;
+}
+.tasks > .items > .item > .content{
+	padding: 0px 10px 10px;
+	background-color: #fff;
+}
+.tasks > .items > .item > .footer{
+	margin-top: 1px;
+	padding: 5px 10px;
+	font-size: 11px;
+	text-align: right;
+	white-space: nowrap;
+	background-color: rgba(255, 255, 255, 0.7);
+}
+.tasks > .items > .item > .footer > div{
+	display: inline-block;
+	font-weight: bold;
+	color: rgba(0, 0, 0, 0.5);
+}
+.tasks > .items > .item > .footer > div > span{ color: rgba(0, 0, 0, 0.3); }
+.tasks > .items > .item > .footer > div + div{ margin-left: 10px; }
+
+.tasks > .items > .item + .item{ margin-top: 10px; }

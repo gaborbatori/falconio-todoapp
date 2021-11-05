@@ -21,6 +21,8 @@ body > .modal > .background{
 	width: 100%;
 	height: 100%;
 	background-color: rgba(255, 255, 255, 0.7);
+	transition: opacity 0.2s ease-out;
+	opacity: 0;
 }
 
 body > .modal > .container{
@@ -28,17 +30,34 @@ body > .modal > .container{
 	border-radius: 5px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
 	overflow: hidden;
+	transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+	transform: scale(0.9);
+	opacity: 0;
 }
-
-body > .modal > .container > *{ padding: 5px 10px; }
-
+body > .modal > .container > *{ padding: 10px 20px; }
 body > .modal > .container > .header{
+	font-size: 13px;
 	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1px;
 	color: #fff;
-	background-color: #444;
+	background-color: #666;
+}
+body > .modal > .container > .warning.content{
+	background-image: url("image/warning.svg");
+	background-position: 20px center;
+	background-size: 60px 60px;
+	background-repeat: no-repeat;
+	padding: 20px 20px 20px 100px;
+}
+body > .modal > .container > .footer{
+	font-size: 12px;
+	text-align: right;
+	background-color: #eee;
 }
 
-body > .modal > .container > .footer{
-	text-align: right;
-	background-color: #ccc;
+body > .visible.modal > .background{ opacity: 1; }
+body > .visible.modal > .container{
+	transform: none;
+	opacity: 1;
 }

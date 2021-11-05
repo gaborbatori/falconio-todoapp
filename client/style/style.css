@@ -19,26 +19,65 @@
 }
 
 body{
-	font-family: arial;
+	font-family: "Lato";
 	font-size: 13px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
+
+a.button{
+	padding: 3px;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #666;
+	letter-spacing: 0.5px;
+	white-space: nowrap;
+	cursor: default;
+	user-select: none;
+}
+a.button:hover{ color: #444; }
+a.button.blue{ color: #0af; }
+a.button.blue:hover{ color: #08e; }
+a.button.red{ color: #f44; }
+a.button.red:hover{ color: #d22; }
+a.button.green{ color: #0e0; }
+a.button.green:hover{ color: #0d0; }
+a.button > i{ margin-right: 5px; }
+a.button + a.button{ margin-left: 10px; }
 
 .form label{
 	display: block;
-	font-size: 11px;
+	margin: 0px 0px 5px 5px;
+	font-size: 12px;
 	font-weight: bold;
 }
 .form label.required:after{
 	content: "*";
+	padding-left: 2px;
 	color: #f00;
-	vertical-align: super;
 }
 .form * + label{ margin-top: 10px; }
 .form input,
 .form textarea{
 	width: 100%;
+	padding: 8px 10px;
+	font-family: inherit;
+	font-size: inherit;
+	color: #666;
+	background-color: #fff;
+	border: 0px none;
+	border-radius: 5px;
+	box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3);
 	box-sizing: border-box;
+	outline: none;
 }
+.form input:active,.form input:focus,
+.form textarea:active, .form textarea:focus{
+	color: #000;
+	box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.8);
+}
+
 .form textarea{
 	resize: vertical;
 	max-height: 200px;
