@@ -1,0 +1,11 @@
+<div class="header">{{:type}} Task</div>
+<div class="form content">
+	<label class="required">Title</label>
+	<input name="title" value="{{attr:data.title}}" />
+	<label>Description</label>
+	<textarea name="description" rows="5">{{>data.description}}</textarea>
+</div>
+<div class="footer">
+	<button class="close">Cancel</button>
+	<button name="confirm">{{:type == "Edit" ? "Update" : "Save"}}</button>
+</div>

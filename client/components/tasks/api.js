@@ -6,6 +6,7 @@ define([], function(){
 	return {
 		get: get,
 		add: add,
+		update: update,
 		del: del
 	};
 	//-------------------------------------------------------------------------------
@@ -17,6 +18,11 @@ define([], function(){
 	function add(data){
 	//-------------------------------------------------------------------------------
 		return $.ajax(window.application.provider.host + path, { type: "POST", dataType: "json", data: data });
+	}
+	//-------------------------------------------------------------------------------
+	function update(id, data){
+	//-------------------------------------------------------------------------------
+		return $.ajax(window.application.provider.host + path + "/" + id, { type: "PATCH", dataType: "json", data: data });
 	}
 	//-------------------------------------------------------------------------------
 	function del(id){

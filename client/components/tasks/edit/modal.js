@@ -7,10 +7,10 @@ define(["modal", "text!./modal.html"], function(modal, tpl){
 		open: open
 	};
 	//-------------------------------------------------------------------------------
-	function open(){
+	function open(type, data){
 	//-------------------------------------------------------------------------------
 		var $defer = $.Deferred(),
-			$modal = modal.open(template.render({})).on("click", "button[name=confirm]", confirm),
+			$modal = modal.open(template.render({ type: type, data: data || {} })).on("click", "button[name=confirm]", confirm),
 			form = {
 				$title: $(":input[name=title]", $modal),
 				$description: $(":input[name=description]", $modal)

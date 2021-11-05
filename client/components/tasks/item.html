@@ -2,5 +2,6 @@
 	<h4>{{>title}}</h4>
 	{{if description}}<p>{{:~window.nl2br(~window.escapehtml(description))}}</p>{{/if}}
 	Created: {{datetime:createdAt}}, Last update: {{datetime:updatedAt}}
+	<button name="edit">edit</button>
 	<button name="del">x</button>
 </li>
