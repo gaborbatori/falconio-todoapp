@@ -30,7 +30,7 @@ define(["modal", "text!./modal.html", "../api"], function(modal, tpl, api){
 
 			//add/edit
 			type == "add"
-				? api.add($.extend(data, { status: "incomplete" })).done(done)
+				? api.add(data).done(done)
 				: api.update(item.id, data).done(done);
 			//-------------------------------------------------------------------------------
 			function done(data){

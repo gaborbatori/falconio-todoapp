@@ -17,7 +17,7 @@ define(["core/application", "jquery"], function(){
 	//-------------------------------------------------------------------------------
 	function add(data){
 	//-------------------------------------------------------------------------------
-		return $.ajax(window.application.provider.host + path, { type: "POST", dataType: "json", data: data });
+		return $.ajax(window.application.provider.host + path, { type: "POST", dataType: "json", data: $.extend(data, { status: "incomplete" }) });
 	}
 	//-------------------------------------------------------------------------------
 	function update(id, data){
