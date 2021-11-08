@@ -1,11 +1,11 @@
-## Task Manager Client
+# Task Manager Client
 This is the Client, based on both business and technical requirements.
 
-###Getting started
+##Getting started
 Download and install **Node.js** version **10.15.0** from https://nodejs.org/en/download/releases/.
 
 Follow setup instructions of the **API layer** in [API Documentation](/API_DOC.md).
-⚠️ **Important**: For me - at least - `$ sails lift` twice(?) worked instead of `$ npm start`.
+>⚠️ **Important**: For me - at least - `$ sails lift` twice(?) worked instead of `$ npm start`.
 
 Install the **http-server** Node.js package:
 ```bash
@@ -20,25 +20,25 @@ $ http-server -c-1
 
 The Client should now be available at `http://localhost:8080/`.
 
-### Features
+## Features
 As I believe, from users perspective, an application in production must sit on two main principles: **user experience** and **performance**.
 
-#### User experience
+### User experience
 The Skill Assessment does not aim reaching high user experience, but I believe that a smart but very simple design is as important as what we see under the hood...
 
-#### Performance
+### Performance
 In order to achieve maximum performance, the Client has the following features under the hood:
 - Minimal set of 3rd party resources
 - Load resources on demand
 - Call API only when needed
 - DOM is changed/updated only where it must be
 
-The Client follows KISS (**k**eep **i**t **s**imple, **s**tupid), Every function implements only one, basic task, in order to prevent commenting or large if/else blocks.
+The Client follows the KISS (**k**eep **i**t **s**imple, **s**tupid) principle, Every function implements only one, basic task, in order to prevent commenting or large if/else blocks.
 
-###Testing
+## Testing
 The Task Manager Component test is available at `http://localhost:8080/test/`.
 
-### ...How I performed :)
+## ...How I performed :)
 From my perspective?
 - I never used node.js, and to be honest, i never liked it. Took me ages to align the different versions of the server, sails and the http-server package. Almost pulled my hairs out...
 - I never used GIT, it took me hours to set up Sourcetree, and integrate the features in my fav SublimeText editor.
