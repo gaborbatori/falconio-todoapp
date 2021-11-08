@@ -1,3 +1,10 @@
+@font-face{
+	font-family: "Lato";
+	font-style: normal;
+	font-weight: normal;
+	src: url("webfont/Lato/Lato.woff2") format("woff"), url("webfont/Lato/Lato.woff") format("woff");
+}
+
 @keyframes loader {
 	to {transform: rotate(360deg);}
 }
