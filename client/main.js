@@ -19,6 +19,6 @@ requirejs.config({
 
 requirejs(["jquery", "core/jsRender/jsrender", "functions"], function(){
 	require(["components/tasks/controller"], function(component){
-		$.when(component.initialize($("body > main"))).then($().removeClass.bind($("body"), "loading"));
+		$.when(component.initialize($("body > main"))).then($.fn.removeClass.bind($("body"), "loading"));
 	});
 });

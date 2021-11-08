@@ -26,7 +26,7 @@ define(["modal", "text!./modal.html"], function(modal, tpl){
 			};
 
 			if(data.title == "")
-				return form.$title.addClass("error").one("focus", $().removeClass.bind(form.$title, "error"));
+				return form.$title.addClass("error").one("focus", $.fn.removeClass.bind(form.$title, "error"));
 
 			$defer.resolve(data);
 			$modal.close();
