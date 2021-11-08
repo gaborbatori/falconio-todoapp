@@ -1,7 +1,7 @@
 <div data-id="{{attr:id}}" class="item">
 	<div class="title">
-		<div>{{if priority == "0"}}<i class="far fa-check-circle"></i>{{/if}}{{>title}}</div>
-		{{if priority == "0"}}
+		<div>{{if status == "completed"}}<i class="far fa-check-circle"></i>{{/if}}{{>title}}</div>
+		{{if status == "completed"}}
 			<a tabindex="0" class="orange button" name="toggle"><i class="far fa-times-circle"></i>Incomplete</a>
 		{{else}}
 			<a tabindex="0" class="green button" name="toggle"><i class="far fa-check-circle"></i>Complete</a>

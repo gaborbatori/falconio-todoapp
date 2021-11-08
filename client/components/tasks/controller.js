@@ -51,9 +51,9 @@ define(["require", "./api", "text!./view.html", "text!./item.html", "css!./style
 		//-------------------------------------------------------------------------------
 			var $item = $(this).closest(".item"),
 				item = items.find(function(item){ return item.id == $item.attr("data-id"); }),
-				priority = item.priority == "1" ? "0" : "1";
+				status = item.status == "completed" ? "incomplete" : "completed";
 
-			api.update(item.id, { priority: priority }).done(function(data){
+			api.update(item.id, { status: status }).done(function(data){
 				$.extend(item, data);
 				$item.replaceWith(template.render(item));
 			});
