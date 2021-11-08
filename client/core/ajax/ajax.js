@@ -1,5 +1,5 @@
 //-------------------------------------------------------------------------------
-define(["modal", "text!./error message.html"], function(modal, tpl){
+define(["modal", "text!./error message.html", "jquery", "core/jsRender/jsrender"], function(modal, tpl){
 //-------------------------------------------------------------------------------
 	var template = $.templates(tpl);
 

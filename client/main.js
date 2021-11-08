@@ -17,10 +17,6 @@ requirejs.config({
 	}
 });
 
-requirejs(["jquery", "core/jsRender/jsrender", "functions"], function(){
-	require(["core/ajax/ajax", "helpers/accessibility"], function(){
-		require(["components/tasks/controller"], function(component){
-			component.initialize($("body > main"));
-		});
-	});
-});
+requirejs(["core/application"], require.bind(null, ["components/tasks/controller"], function(component){
+	component.initialize($("body > main"));
+}));
