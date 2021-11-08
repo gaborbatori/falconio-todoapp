@@ -89,7 +89,7 @@ define(["require", "./api", "text!./view.html", "text!./item.html", "css!./style
 		function showEmptyMessageIfNone(){
 		//-------------------------------------------------------------------------------
 			if(!$items.children().length)
-				$items.html("<p>No tasks... Great!</p>");
+				$items.html('<div class="empty"><i class="fas fa-check"></i><h2>Great!</h2>You have no more tasks left…</div>');
 		}
 		//-------------------------------------------------------------------------------
 		function hideEmptyMessage(){

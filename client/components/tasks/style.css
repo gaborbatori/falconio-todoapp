@@ -11,6 +11,7 @@
 	font-weight: bold;
 	text-transform: uppercase;
 	letter-spacing: 2px;
+	user-select: none;
 }
 .tasks > .header > a{
 	display: inline-block;
@@ -66,3 +67,17 @@
 .tasks > .items > .item > .footer > div + div{ margin-left: 10px; }
 
 .tasks > .items > .item + .item{ margin-top: 10px; }
+
+.tasks > .items > .empty{
+	padding-bottom: 20px;
+	text-align: center;
+}
+.tasks > .items > .empty > i{
+	display: block;
+	font-size: 60px;
+	color: #0c3;
+}
+.tasks > .items > .empty > h2{
+	margin: 0px 0px 10px;
+	font-size: 30px;
+}
