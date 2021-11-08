@@ -6,7 +6,7 @@
 	<h4>Details</h4>
 	{{nl2br:~window.safehtml(responseJSON.details)}}
 {{else}}
-	{{>responseText}}
+	{{:responseText || "<b>Failed to load resource</b><br />Check your connection!"}}
 {{/if}}
 </div>
 <div class="footer"><a class="close button">Close</a></div>
