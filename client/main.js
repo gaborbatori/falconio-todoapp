@@ -1,11 +1,5 @@
-window.application = {
-	provider: {
-		host: "http://localhost:1337"
-	}
-};
-
 requirejs.config({
-	baseUrl: "./",
+	baseUrl: "/",
 	paths: {
 		//lib - core
 		jquery: "lib/jQuery/jquery-3.6.0.min",
