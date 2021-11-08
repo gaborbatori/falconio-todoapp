@@ -8,9 +8,13 @@
 @keyframes loader {
 	to {transform: rotate(360deg);}
 }
-.loading{ pointer-events: none; }
+.loading{
+	position: relative;
+	min-height: 30px;
+	pointer-events: none;
+}
 .loading:before{
-	content: '';
+	content: "";
 	box-sizing: border-box;
 	position: absolute;
 	top: 50%;
