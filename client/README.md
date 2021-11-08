@@ -2,7 +2,12 @@
 This is the Client, based on both business and technical requirements.
 
 ###Getting started
-Install **http-server**:
+Download and install **Node.js** version **10.15.0** from https://nodejs.org/en/download/releases/.
+
+Follow setup instructions of the **API layer** in [API Documentation](/API_DOC.md).
+⚠️ **Important**: For me - at least - `$ sails lift` twice(?) worked instead of `$ npm start`.
+
+Install the **http-server** Node.js package:
 ```bash
 $ npm install http-server@0.12.3 -g
 ```
