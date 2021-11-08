@@ -1,5 +1,5 @@
 //-------------------------------------------------------------------------------
-define(["modal", "text!./modal.html"], function(modal, tpl){
+define(["modal", "text!./modal.html", "../api"], function(modal, tpl, api){
 //-------------------------------------------------------------------------------
 	var template = $.templates(tpl);
 
@@ -7,10 +7,10 @@ define(["modal", "text!./modal.html"], function(modal, tpl){
 		show: show
 	};
 	//-------------------------------------------------------------------------------
-	function show(type, data){
+	function show(type, item){
 	//-------------------------------------------------------------------------------
 		var $defer = $.Deferred(),
-			$modal = modal.open(template.render({ type: type, data: data || {} })).on("click", "a.button[name=confirm]", confirm),
+			$modal = modal.open(template.render({ type: type, item: item || {} })).on("click", "a.button[name=confirm]", confirm),
 			form = {
 				$title: $(":input[name=title]", $modal),
 				$description: $(":input[name=description]", $modal)
@@ -28,8 +28,17 @@ define(["modal", "text!./modal.html"], function(modal, tpl){
 			if(data.title == "")
 				return form.$title.addClass("error").one("focus", $.fn.removeClass.bind(form.$title, "error"));
 
-			$defer.resolve(data);
-			$modal.close();
+			//add/edit
+			type == "add"
+				? api.add($.extend(data, { priority: "1" })).done(done)
+				: api.update(item.id, data).done(done);
+			//-------------------------------------------------------------------------------
+			function done(data){
+			//-------------------------------------------------------------------------------
+				$defer.resolve(data);
+				$modal.close();
+			}
+			//-------------------------------------------------------------------------------
 		}
 		//-------------------------------------------------------------------------------
 	}

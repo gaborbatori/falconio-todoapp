@@ -17,28 +17,30 @@ define(["require", "./api", "text!./view.html", "text!./item.html", "css!./style
 				.on("click", "a.button[name=edit]", edit)
 				.on("click", "a.button[name=del]", del)
 				.on("click", "a.button[name=reload]", load),
-			$items = $view.children(".items");
+			$items = $view.children(".items").addClass("loading");
 
 		return load();
 		//-------------------------------------------------------------------------------
 		function load(){
 		//-------------------------------------------------------------------------------
-			return api.list().done(function(data){
+			return api.list()
+				.done(function(data){
 					items = data;
 					$items.empty().html(template.render(items));
 					showEmptyMessageIfNone();
-				}).fail(function(xhr){ $items.empty().html(xhr.statusText); });
+				})
+				.fail($.fn.html.bind($items, '<div class="empty">Error while loading list…</div>'))
+				.always($.fn.removeClass.bind($items, "loading"));
 		}
 		//-------------------------------------------------------------------------------
 		function add(){
 		//-------------------------------------------------------------------------------
 			require(["./edit/modal"], function(modal){
-				modal.show("New").done(function(data){
-					api.add($.extend(data, { priority: "1" })).done(function(item){
-						hideEmptyMessage();
-						items.push(item);
-						$items.append(template.render(item));
-					});
+				modal.show("add").done(function(item){
+					hideEmptyMessage();
+
+					items.push(item);
+					$items.append(template.render(item));
 				});
 			});
 		}
@@ -61,11 +63,9 @@ define(["require", "./api", "text!./view.html", "text!./item.html", "css!./style
 				item = items.find(function(item){ return item.id == $item.attr("data-id"); });
 
 			require(["./edit/modal"], function(modal){
-				modal.show("Edit", item).done(function(data){
-					api.update(item.id, data).done(function(data){
-						$.extend(item, data);
-						$item.replaceWith(template.render(item));
-					});
+				modal.show("update", item).done(function(data){
+					$.extend(item, data);
+					$item.replaceWith(template.render(item));
 				});
 			});
 		}
@@ -76,12 +76,10 @@ define(["require", "./api", "text!./view.html", "text!./item.html", "css!./style
 				item = items.find(function(item){ return item.id == $item.attr("data-id"); });
 
 			require(["./del/modal"], function(modal){
-				modal.show().done(function(){
-					api.del($item.attr("data-id")).done(function(){
-						items.splice(items.indexOf(item), 1);
-						$item.remove();
-						showEmptyMessageIfNone();
-					});
+				modal.show(item).done(function(){
+					items.splice(items.indexOf(item), 1);
+					$item.remove();
+					showEmptyMessageIfNone();
 				});
 			});
 		}

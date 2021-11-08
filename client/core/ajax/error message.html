@@ -1,0 +1,12 @@
+<div class="header">{{>status}} ({{>statusText}})</div>
+<div class="warning content" style="max-width: 600px">
+{{if responseJSON}}	
+	<h3>{{>responseJSON.code}}</h3>
+	{{nl2br:~window.safehtml(responseJSON.message)}}
+	<h4>Details</h4>
+	{{nl2br:~window.safehtml(responseJSON.details)}}
+{{else}}
+	{{>responseText}}
+{{/if}}
+</div>
+<div class="footer"><a class="close button">Close</a></div>

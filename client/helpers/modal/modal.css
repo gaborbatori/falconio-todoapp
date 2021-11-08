@@ -53,6 +53,14 @@ body > .modal > .container > .warning.content{
 	background-repeat: no-repeat;
 	padding: 20px 20px 20px 100px;
 }
+
+body > .modal > .container > .content h1:first-child,
+body > .modal > .container > .content h2:first-child,
+body > .modal > .container > .content h3:first-child,
+body > .modal > .container > .content h4:first-child,
+body > .modal > .container > .content h5:first-child,
+body > .modal > .container > .content h6:first-child{ margin-top: 0; }
+
 body > .modal > .container > .footer{
 	padding: 10px 20px;
 	font-size: 12px;

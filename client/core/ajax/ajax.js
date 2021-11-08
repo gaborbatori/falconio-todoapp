@@ -1,18 +1,13 @@
 //-------------------------------------------------------------------------------
-define(["jsrender", "jquery", "functions"], function(){
+define(["modal", "text!./error message.html"], function(modal, tpl){
 //-------------------------------------------------------------------------------
-	$.views.helpers("window", window);
+	var template = $.templates(tpl);
 
-	$.views.converters("datetime", datetime);
-	$.views.converters("safehtml", window.safehtml);
-	$.views.converters("escapehtml", window.escapehtml);
-	$.views.converters("nl2br", window.nl2br);
+	$(document).ajaxError(onGlobalError);
 	//-------------------------------------------------------------------------------
-	function datetime(timestamp){
+	function onGlobalError(event, xhr, ajaxSettings){
 	//-------------------------------------------------------------------------------
-		var time = new Date(timestamp);
-
-		return time.toLocaleDateString() + " " + time.toLocaleTimeString();
+		modal.open(template.render(xhr));
 	}
 	//-------------------------------------------------------------------------------
 });

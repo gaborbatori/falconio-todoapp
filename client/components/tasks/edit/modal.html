@@ -1,9 +1,9 @@
-<div class="header">{{:type}} Task</div>
+<div class="header">{{:type == "add" ? "New" : "Edit"}} Task</div>
 <div class="form content" style="width: 400px">
 	<label class="required">Title</label>
-	<input name="title" value="{{attr:data.title}}" />
+	<input name="title" value="{{attr:item.title}}" />
 	<label>Description</label>
-	<textarea name="description" rows="5">{{>data.description}}</textarea>
+	<textarea name="description" rows="5">{{>item.description}}</textarea>
 </div>
 <div class="footer">
 	<a class="close button">Cancel</a>
