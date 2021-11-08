@@ -34,10 +34,17 @@
 	font-weight: bold;
 }
 .tasks > .items > .item > .title > div{ flex-grow: 1; }
+.tasks > .items > .item > .title > div > i{
+	margin-right: 5px;
+	color: #0c4;
+}
 .tasks > .items > .item > .title > a{
 	margin-left: 10px;
 	font-size: 11px;
+	opacity: 0;
+	transition: opacity 0.2s ease-out;
 }
+.tasks > .items > .item:hover > .title > a{ opacity: 1; }
 .tasks > .items > .item > .content{
 	padding: 0px 10px 10px;
 	background-color: #fff;

@@ -30,19 +30,19 @@ a.button{
 	padding: 3px;
 	font-weight: bold;
 	text-transform: uppercase;
-	color: #666;
+	color: #444;
 	letter-spacing: 0.5px;
 	white-space: nowrap;
-	cursor: default;
+	cursor: pointer;
 	user-select: none;
 }
-a.button:hover{ color: #444; }
-a.button.blue{ color: #0af; }
-a.button.blue:hover{ color: #08e; }
-a.button.red{ color: #f44; }
-a.button.red:hover{ color: #d22; }
-a.button.green{ color: #0e0; }
-a.button.green:hover{ color: #0d0; }
+a.button:hover{ color: #666; }
+a.button.red{ color: #d22; }
+a.button.red:hover{ color: #f44; }
+a.button.green{ color: #0c4; }
+a.button.green:hover{ color: #0d4; }
+a.button.blue{ color: #08e; }
+a.button.blue:hover{ color: #0af; }
 a.button > i{ margin-right: 5px; }
 a.button + a.button{ margin-left: 10px; }
 
@@ -83,4 +83,4 @@ a.button + a.button{ margin-left: 10px; }
 	max-height: 200px;
 }
 .form input.error,
-.form textarea.error{ border-color: red; }
+.form textarea.error{ box-shadow: 0px 0px 2px #f00; }

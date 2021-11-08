@@ -13,6 +13,7 @@ define(["require", "./api", "text!./view.html", "text!./item.html", "css!./style
 	//-------------------------------------------------------------------------------
 		var $view = $container.html(view).children()
 				.on("click", "a.button[name=add]", add)
+				.on("click", "a.button[name=toggle]", toggle)
 				.on("click", "a.button[name=edit]", edit)
 				.on("click", "a.button[name=del]", del)
 				.on("click", "a.button[name=reload]", load),
@@ -33,12 +34,24 @@ define(["require", "./api", "text!./view.html", "text!./item.html", "css!./style
 		//-------------------------------------------------------------------------------
 			require(["./edit/modal"], function(modal){
 				modal.show("New").done(function(data){
-					api.add(data).done(function(item){
+					api.add($.extend(data, { priority: "1" })).done(function(item){
 						hideEmptyMessage();
 						items.push(item);
 						$items.append(template.render(item));
 					});
 				});
+			});
+		}
+		//-------------------------------------------------------------------------------
+		function toggle(){
+		//-------------------------------------------------------------------------------
+			var $item = $(this).closest(".item"),
+				item = items.find(function(item){ return item.id == $item.attr("data-id"); }),
+				priority = item.priority == "1" ? "0" : "1";
+
+			api.update(item.id, { priority: priority }).done(function(data){
+				$.extend(item, data);
+				$item.replaceWith(template.render(item));
 			});
 		}
 		//-------------------------------------------------------------------------------

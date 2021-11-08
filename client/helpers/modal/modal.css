@@ -28,21 +28,24 @@ body > .modal > .background{
 body > .modal > .container{
 	z-index: 2;
 	border-radius: 5px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+	background-color: #fff;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 	overflow: hidden;
 	transition: transform 0.2s ease-out, opacity 0.2s ease-out;
 	transform: scale(0.9);
 	opacity: 0;
 }
-body > .modal > .container > *{ padding: 10px 20px; }
 body > .modal > .container > .header{
+	padding: 15px 20px;
 	font-size: 13px;
 	font-weight: bold;
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	color: #fff;
 	background-color: #666;
+	user-select: none;
 }
+body > .modal > .container > .content{ padding: 15px; }
 body > .modal > .container > .warning.content{
 	background-image: url("image/warning.svg");
 	background-position: 20px center;
@@ -51,9 +54,11 @@ body > .modal > .container > .warning.content{
 	padding: 20px 20px 20px 100px;
 }
 body > .modal > .container > .footer{
+	padding: 10px 20px;
 	font-size: 12px;
 	text-align: right;
 	background-color: #eee;
+	user-select: none;
 }
 
 body > .visible.modal > .background{ opacity: 1; }
