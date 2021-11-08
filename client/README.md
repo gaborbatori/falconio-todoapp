@@ -35,11 +35,14 @@ In order to achieve maximum performance, the Client has the following features u
 
 The Client follows KISS (**k**eep **i**t **s**imple, **s**tupid), Every function implements only one, basic task, in order to prevent commenting or large if/else blocks.
 
+###Testing
+The Task Manager Component test is available at `http://localhost:8080/test/`.
+
 ### ...How I performed :)
 From my perspective?
 - I never used node.js, and to be honest, i never liked it. Took me ages to align the different versions of the server, sails and the http-server package. Almost pulled my hairs out...
 - I never used GIT, it took me hours to set up Sourcetree, and integrate the features in my fav SublimeText editor.
-- I never wrote tests, as I never believed in it - sorry :).  I do understand the idea behind it - can be convinced
+- I never wrote tests, as I never believed in it, but happy to argue on that.
 
 Everything else went well, the code You see is the way I always develop, no glitches on it.
 I can learn new ways, new frameworks, new ideas - I just wanted You to know what is in the package. No secret, no worries.
