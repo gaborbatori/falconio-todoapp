@@ -2,12 +2,12 @@
 	<div class="title">
 		<div>{{if priority == "0"}}<i class="far fa-check-circle"></i>{{/if}}{{>title}}</div>
 		{{if priority == "0"}}
-			<a class="button" name="toggle"><i class="far fa-times-circle"></i>Incomplete</a>
+			<a tabindex="0" class="orange button" name="toggle"><i class="far fa-times-circle"></i>Incomplete</a>
 		{{else}}
-			<a class="green button" name="toggle"><i class="far fa-check-circle"></i>Complete</a>
+			<a tabindex="0" class="green button" name="toggle"><i class="far fa-check-circle"></i>Complete</a>
 		{{/if}}
-		<a class="button" name="edit"><i class="fas fa-pencil-alt"></i>Edit</a>
-		<a class="red button" name="del"><i class="fas fa-trash-alt"></i>Delete</a>
+		<a tabindex="0" class="button" name="edit"><i class="fas fa-pencil-alt"></i>Edit</a>
+		<a tabindex="0" class="red button" name="del"><i class="fas fa-trash-alt"></i>Delete</a>
 	</div>
 	{{if description}}<div class="content">{{:~window.nl2br(~window.escapehtml(description))}}</div>{{/if}}
 	<div class="footer">

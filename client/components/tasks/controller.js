@@ -16,7 +16,9 @@ define(["require", "./api", "text!./view.html", "text!./item.html", "css!./style
 				.on("click", "a.button[name=toggle]", toggle)
 				.on("click", "a.button[name=edit]", edit)
 				.on("click", "a.button[name=del]", del)
-				.on("click", "a.button[name=reload]", load),
+				.on("click", "a.button[name=reload]", load)
+				.on("focusin", ".item", function(){ $(this).find("> .title > a").css("opacity", 1); }) //accessibility - buttons remain visible on keyboard navigation
+				.on("focusout", ".item", function(){ $(this).find("> .title > a").css("opacity", ""); }), //eof accessibility
 			$items = $view.children(".items").addClass("loading");
 
 		return load();

@@ -18,7 +18,9 @@ requirejs.config({
 });
 
 requirejs(["jquery", "core/jsRender/jsrender", "functions"], function(){
-	require(["components/tasks/controller", "core/ajax/ajax"], function(component){
-		component.initialize($("body > main"));
+	require(["core/ajax/ajax", "helpers/accessibility"], function(){
+		require(["components/tasks/controller"], function(component){
+			component.initialize($("body > main"));
+		});
 	});
 });

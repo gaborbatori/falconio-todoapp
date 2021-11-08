@@ -6,6 +6,9 @@
 }
 
 .tasks > .header{
+	display: flex;
+	justify-items: stretch;
+	align-items: center;
 	margin: 20px 20px 25px;
 	font-size: 20px;
 	font-weight: bold;
@@ -13,12 +16,9 @@
 	letter-spacing: 2px;
 	user-select: none;
 }
-.tasks > .header > a{
-	display: inline-block;
-	float: right;
-	font-size: 13px;
-}
-.tasks > .header > a + a{ margin-right: 10px; }
+.tasks > .header > div{ flex-grow: 1; }
+.tasks > .header > a{ font-size: 13px; }
+.tasks > .header > a + a{ margin-left: 10px; }
 
 .tasks > .items > .item{
 	border-radius: 5px;

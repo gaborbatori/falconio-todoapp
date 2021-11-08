@@ -45,9 +45,10 @@ a.button{
 	letter-spacing: 0.5px;
 	white-space: nowrap;
 	cursor: pointer;
-	user-select: none;
 }
 a.button:hover{ color: #666; }
+a.button.orange{ color: #f80; }
+a.button.orange:hover{ color: #f91; }
 a.button.red{ color: #d22; }
 a.button.red:hover{ color: #f44; }
 a.button.green{ color: #0c4; }
