@@ -1,5 +1,5 @@
 //-------------------------------------------------------------------------------
-define(["text!./modal.html", "css!./modal.css"], function(tpl, css){
+define(["text!./modal.html", "css!./modal.css", "core/application"], function(tpl, css){
 //-------------------------------------------------------------------------------
 	var template = $.templates(tpl),
 		zIndex = 1000000;
