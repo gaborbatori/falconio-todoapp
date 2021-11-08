@@ -1,5 +1,5 @@
 //-------------------------------------------------------------------------------
-define(["text!./modal.html", "css!./modal.css"], function(tpl){
+define(["text!./modal.html", "css!./modal.css"], function(tpl, css){
 //-------------------------------------------------------------------------------
 	var template = $.templates(tpl),
 		zIndex = 1000000;
@@ -14,9 +14,11 @@ define(["text!./modal.html", "css!./modal.css"], function(tpl){
 				.appendTo($("body").addClass("has-modals"))
 				.on("click", ".close", close);
 
+		//set close to jquery object, so it can close itself on demand
 		$modal.close = close;
 
-		window.setTimeout($("").addClass.bind($modal, "visible"), 100);
+		//fade in: request next timefrime to add transition after css has been added to DOM (as same timeframe would set transition to end immediately)
+		css.done(window.requestAnimationFrame.bind(window, window.requestAnimationFrame.bind(window, $.fn.addClass.bind($modal, "visible"))));
 
 		return $modal;
 		//-------------------------------------------------------------------------------
@@ -25,10 +27,9 @@ define(["text!./modal.html", "css!./modal.css"], function(tpl){
 			if($("body").children(".modal").length == 1)
 				$("body").removeClass("has-modals");
 
+			//fade out, remove from DOM when done
 			$modal.removeClass("visible");
-			window.setTimeout(function(){
-				$modal.remove();
-			}, 500);
+			window.setTimeout($.fn.remove.bind($modal), 500);
 		}
 		//-------------------------------------------------------------------------------
 	}
